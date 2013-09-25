@@ -2,14 +2,14 @@ package org.wedding.game.card;
 
 public interface Operations {
 
-	public abstract void show();
+	void show();
 
-	public abstract void hide();
+	void hide();
 
-	public abstract void discover();
+	void discover();
 
-	public abstract boolean isVisible();
+	boolean isVisible();
 
-	public abstract boolean isDiscovered();
+	boolean isDiscovered();
 
 }

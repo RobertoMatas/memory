@@ -14,7 +14,7 @@ public class TwoMovesTurn implements Turn {
 
 	private final CardsHandler movesHandler;
 
-	public TwoMovesTurn(final Board board, final CardsHandler movesHandler) {
+	protected TwoMovesTurn(final Board board, final CardsHandler movesHandler) {
 		this.board = board;
 		this.movesHandler = movesHandler;
 		this.movesInTurn = 0;

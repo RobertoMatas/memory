@@ -23,6 +23,10 @@ public class ShuffleBoardGenerator implements BoardGenerator {
 		validateInput();
 		List<String> duplicate = duplicate(cardNames);
 		Collections.shuffle(duplicate);
+		return fillMatrixBoard(duplicate);
+	}
+
+	private Card[][] fillMatrixBoard(List<String> duplicate) {
 		int rowNumber = 0, colNumber = 0;
 		int rows = duplicate.size() / columns, jumpToNextRow = columns - 1;
 		Card[][] board = new Card[rows][columns];

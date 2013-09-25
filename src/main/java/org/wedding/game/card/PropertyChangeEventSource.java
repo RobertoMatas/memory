@@ -4,6 +4,6 @@ import java.beans.PropertyChangeListener;
 
 public interface PropertyChangeEventSource {
 
-	public abstract void addPropertyChangeListener(PropertyChangeListener listener);
+	void addPropertyChangeListener(PropertyChangeListener listener);
 
 }
