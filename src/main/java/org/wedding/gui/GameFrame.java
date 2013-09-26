@@ -27,11 +27,12 @@ public class GameFrame extends JFrame implements Observer, ActionListener {
 
 	public GameFrame(GameFactory gameFactory) {
 		this.gameFactory = gameFactory;
-		initNewGame();
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		this.setJMenuBar(new GameMenu(this));
+		initNewGame();
 	}
 
-	private void initNewGame() {
+	void initNewGame() {
 		removeGameCardsIfExist();
 		this.game = gameFactory.build();
 		this.game.addObserver(this);
@@ -60,7 +61,7 @@ public class GameFrame extends JFrame implements Observer, ActionListener {
 				}
 			}
 		}
-		
+
 	}
 
 	public void update(Observable o, Object arg) {
@@ -68,15 +69,19 @@ public class GameFrame extends JFrame implements Observer, ActionListener {
 		int n = JOptionPane.showOptionDialog(this, "Has ganado.\n¿Quieres volver a jugar?", "Champion!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 		if (n == JOptionPane.YES_OPTION) {
 			initNewGame();
-			
+
 		} else if (n == JOptionPane.NO_OPTION) {
-			System.exit(NORMAL);
+			exit();
 		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		GameCard source = (GameCard) e.getSource();
 		game.discover(source.getPosition());
+	}
+
+	void exit() {
+		System.exit(NORMAL);
 	}
 
 }

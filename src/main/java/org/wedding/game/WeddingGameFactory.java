@@ -14,7 +14,7 @@ public class WeddingGameFactory implements GameFactory {
 
 	public Game build() {
 		Set<String> cardNames = new HashSet<String>(Arrays.asList(names));
-		GameBoard gameBoard = new GameBoard(new ShuffleBoardGenerator(cardNames, 2));
+		GameBoard gameBoard = new GameBoard(new ShuffleBoardGenerator(cardNames, 6));
 		return new Game(gameBoard, new TurnFactoryImpl());
 	}
 

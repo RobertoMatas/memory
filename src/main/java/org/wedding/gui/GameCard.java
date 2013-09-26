@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.net.URL;
 
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.plaf.basic.BasicBorders.ButtonBorder;
 
 import org.wedding.game.card.Card;
 import org.wedding.game.card.Position;
+import org.wedding.gui.utils.ClassPathResourceLoadUtils;
+import org.wedding.gui.utils.ResourceLoadUtils;
 
 public class GameCard extends JButton implements PropertyChangeListener {
 
@@ -21,11 +21,13 @@ public class GameCard extends JButton implements PropertyChangeListener {
 	 */
 	private static final long serialVersionUID = 6738350809142514732L;
 	private final Card card;
+	private final ResourceLoadUtils resourceLoadUtils;
 
 	public GameCard(Card card) {
 		this.card = card;
+		this.resourceLoadUtils = new ClassPathResourceLoadUtils();
 		setName(card.getName() + card.getPosition());
-		Icon image = getImage("back");
+		Icon image = resourceLoadUtils.icon("back");
 		this.setIcon(image);
 		this.setBackground(new Color(103, 174, 245));
 		setSize(image);
@@ -34,16 +36,8 @@ public class GameCard extends JButton implements PropertyChangeListener {
 	}
 
 	private void setSize(Icon image) {
-		this.setMinimumSize(new Dimension(image.getIconWidth(), image
-				.getIconHeight()));
-		this.setMaximumSize(new Dimension(image.getIconWidth(), image
-				.getIconHeight()));
-	}
-
-	private Icon getImage(String name) {
-		ClassLoader classLoader = this.getClass().getClassLoader();
-		URL resource = classLoader.getResource(name + ".png");
-		return new ImageIcon(resource);
+		this.setMinimumSize(new Dimension(image.getIconWidth(), image.getIconHeight()));
+		this.setMaximumSize(new Dimension(image.getIconWidth(), image.getIconHeight()));
 	}
 
 	public Position getPosition() {
@@ -56,10 +50,10 @@ public class GameCard extends JButton implements PropertyChangeListener {
 			setBorder(Color.MAGENTA);
 		} else {
 			if (card.isVisible()) {
-				this.setIcon(getImage(this.card.getName()));
+				this.setIcon(resourceLoadUtils.icon(this.card.getName()));
 				setBorder(Color.YELLOW);
 			} else {
-				this.setIcon(getImage("back"));
+				this.setIcon(resourceLoadUtils.icon("back"));
 				setBorder(Color.WHITE);
 			}
 		}
