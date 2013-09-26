@@ -25,8 +25,15 @@ public class Game extends Observable {
 			actualTurn.end();
 			if (gameIsNotFinished()) {
 				newTurn();
+			} else {
+				notifyGameFinished();
 			}
 		}
+	}
+
+	private void notifyGameFinished() {
+		setChanged();
+		notifyObservers();
 	}
 
 	private void newTurn() {
