@@ -9,8 +9,6 @@ public class DefaultCardsHandler implements CardsHandler {
 
 	private List<Card> cards;
 
-	int index = 0;
-
 	public DefaultCardsHandler() {
 		this.cards = new ArrayList<Card>();
 	}
