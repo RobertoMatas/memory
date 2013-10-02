@@ -1,6 +1,8 @@
 package org.wedding.gui;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -29,6 +31,9 @@ public class GameFrame extends JFrame implements Observer, ActionListener {
 		this.gameFactory = gameFactory;
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setJMenuBar(new GameMenu(this));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setMaximumSize(screenSize);
+		setExtendedState(MAXIMIZED_BOTH);
 		initNewGame();
 	}
 
@@ -66,7 +71,10 @@ public class GameFrame extends JFrame implements Observer, ActionListener {
 
 	public void update(Observable o, Object arg) {
 		Object[] options = { "Si, claro", "Jamás" };
-		int n = JOptionPane.showOptionDialog(this, "Has ganado.\n¿Quieres volver a jugar?", "Champion!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+		int n = JOptionPane.showOptionDialog(this,
+				"Has ganado.\n¿Quieres volver a jugar?", "Champion!",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+				options, options[0]);
 		if (n == JOptionPane.YES_OPTION) {
 			initNewGame();
 

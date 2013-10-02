@@ -41,14 +41,6 @@ public class ShuffleBoardGeneratorTest {
 		assertThat(board.length, is(rows()));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public final void generateOnlyAcceptEvenNumberOfNames() {
-		cardNames.add("5");
-
-		boardGenerator.generate();
-
-	}
-
 	private int rows() {
 		return 2;
 	}

@@ -29,7 +29,7 @@ public class GameCard extends JButton implements PropertyChangeListener {
 		setName(card.getName() + card.getPosition());
 		Icon image = resourceLoadUtils.icon("back");
 		this.setIcon(image);
-		this.setBackground(new Color(103, 174, 245));
+		this.setBackground(Color.WHITE);
 		setSize(image);
 		setBorder(Color.WHITE);
 		this.card.addPropertyChangeListener(this);

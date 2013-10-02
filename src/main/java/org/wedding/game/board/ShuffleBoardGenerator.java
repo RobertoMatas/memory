@@ -42,7 +42,7 @@ public class ShuffleBoardGenerator implements BoardGenerator {
 	}
 
 	private void validateInput() {
-		if (notIsEven(cardNames.size()))
+		if (notIsEven(cardNames.size() * 2))
 			throw new IllegalArgumentException("El número de cartas ha de ser par");
 	}
 

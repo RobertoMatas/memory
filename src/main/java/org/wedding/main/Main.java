@@ -9,7 +9,6 @@ public class Main {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				GameFrame gameFrame = new GameFrame(new WeddingGameFactory());
-				gameFrame.setLocation(300, 50);
 				gameFrame.setVisible(true);
 			}
 		});
